@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="shortcut icon" href="{% static 'plugins/images/favicon.jfif' %}" type="image/x-icon">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" type="text/css" href={% static 'css/main.css' %}>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.css" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/core.css'%}" >
+<link rel="stylesheet" href="{% static 'css/style.css'%}">
+<link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+        </head>
+<style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+@font-face {
+    font-family: CircularStd;
+    src: url(assets/fonts/CircularStd-Bold.eot);
+    src: url("assets/fonts/CircularStd-Bold.eot?#iefix") format("embedded-opentype"), url("assets/fonts/CircularStd-Bold.woff") format("woff"), url("assets/fonts/CircularStd-Bold.ttf") format("truetype"), url("assets/fonts/CircularStd-Bold.svg#bcc26993292869431e54c666aafa8fcd") format("svg");
+}
+.pre-loader
+{
+    background:#fff;
+    background-position:center center;
+    background-size:13%;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:12345;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center
+
+}
+.pre-loader .loader-logo
+{
+    padding-bottom:15px
+    
+    }
+    
+.pre-loader .loader-progress{height:8px;border-radius:15px;max-width:200px;margin:0 auto;display:block;background:#ecf0f4;overflow:hidden}.pre-loader .bar{width:0%;height:8px;display:block;background:#1b00ff}.pre-loader .percent{text-align:center;font-size:24px;display:none}.pre-loader .loading-text{text-align:center;font-size:18px;font-weight:500;padding-top:15px}
+
+</style>
+<body>
+        <!-- <div class="pre-loader">
+                <div class="pre-loader-box">
+                    <div class="loader-logo">
+                        <img src="vendors/images/deskapp-logo.svg" alt="" />
+                    </div>
+                    <div class="loader-progress" id="progress_div">
+                        <div class="bar" id="bar1"></div>
+                    </div>
+                    <div class="percent" id="percent1">0%</div>
+                    <div class="loading-text">Loading...</div>
+                </div>
+            </div> -->
+{% include 'hostelapp/navbar.html' %}
+
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="alert alert-success alert-dismissible fade show">
+                    <strong color="red">Success!</strong> {{ message }}.
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <strong color="red">WARNING!</strong> {{ message }}.
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+<div class="container">
+    {% block content %}
+
+    {% endblock %}
+</div>
+<hr>
+<!-- <h5>Licence is taken already!</h5> -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'js/apexcharts-setting.js' %}"></script>
+<script src="{% static 'js/core.js' %}"></script>
+<script src="{% static 'js/dashboard3.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/layout-settings.js' %}"></script>
+<script src="{% static 'js/process.js' %}"></script>
+<script src="{% static 'js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/script.min.js' %}"></script>
+
+</body>
+</html>

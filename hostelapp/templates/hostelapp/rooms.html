@@ -1,0 +1,76 @@
+{% extends 'hostelapp/main.html' %}
+{% load static %}
+{% block content %}
+    <!-- <h3>Rooms available:</h3> -->
+
+<br>
+
+<!-- <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head> -->
+                        
+
+    {% for i in roomlist %}
+       
+                                <a href="{% url 'confirmation_booking' i.id %}"
+                                    class="btn btn-primary btn-lg btn-danger" id="room" style="margin: 7px; background-color: #77b5fe; border-color: #77b5fe;"><i class="fa fa-door"></i>{{ i }} 
+                                    <br>
+                                   <i class="fa fa-bed"></i> {{i.Capacity}} Bedded
+                                    <br>
+                                    <i class="fa fa-user"></i>
+                                       {{i.Number_already_occupied}} Occupant(s)4
+                                </a>
+
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 
+                                    <script type="text/javascript">
+                                        $(document).ready(function(){
+                                            var user_gender = "{{user.Gender}}";
+                                            var female = "Female";
+                                            var male = "Male";
+                                            if (user_gender==female){
+                                                $("#female_div").show();
+                                            }else if(user_gender==male){
+                                                $("#male_div").show();
+                                            }
+                                        })
+                                    </script> -->
+
+
+
+                                    <!-- <script type="text/javascript">
+                                        $(document).ready(function(){
+                                            var occupied = "{{i.Number_already_occupied}}";
+                                            var bad = "{{i.Capacity}}";
+                                            let i;
+                                            for (let i = 0; i < occupied.length; i++) 
+                                            if (occupied == bad)
+                                            {
+                                                $("#room").css("background-color", "yellow");
+                                            }else if(occupied == bad)
+                                            {
+                                                $("#room").hide(4000);
+                                                $("#room").css("background-color", "red");
+                                            }
+                                            else if(occupied == bad)
+                                            {
+                                                $("#room").hide(4000);
+                                                $("#room").css("background-color", "green");
+                                            }
+                                        })
+                                    </script> -->
+
+                                    
+                                    <!-- {% if capacity == occupied %}
+                                    
+                                    {% endif %} -->
+                                 
+           
+
+
+    {% endfor %}
+
+
+
+{% endblock %}

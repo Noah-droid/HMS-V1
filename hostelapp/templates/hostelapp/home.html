@@ -1,0 +1,482 @@
+{% extends 'hostelapp/main.html' %}
+{% load static %}
+{% block content %}
+
+    <h1 color="red">Welcome to the Hostel Allocation System</h1>
+    <div class="title pb-20">
+        <h2 class="h3 mb-0">Hello, {{ request.user|title }}!</h2>
+    </div>
+<!-- 
+    <div id="dvContents" style="padding: 5px;width:305px">
+
+        <div class="d-flex justify-content-center">
+
+<img src="{% static 'img/LCU.jpg'%}" align="center" width="70" height="70" class="rounded-circle">
+<br />
+
+
+        </div>
+        <h1>LEAD CITY UNIVERSITY</h1>
+    <h3 align="center">E-Receipt</h3>
+    <table cellspacing="0" rules="all" border="1" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>booked room</th>
+            <th>Ref No</th>
+            <th>Time Booked</th>
+        </tr>
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name}}</td>
+            <td>{{ i.id }}</td>
+            <td>{{i.created_on}}</td>
+        
+        </tr>
+        
+    </table>
+    </div> -->
+    
+    
+    <!-- <div class="row pb-10"> -->
+
+                    <!-- <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                            <div class="card-box height-100-p widget-style3">
+                                <div class="d-flex flex-wrap">
+                                    <div class="widget-data">
+                                        <div class="weight-700 font-24 text-dark">Name</div>
+                                        <div class="font-14 text-secondary weight-500">
+                                           {{user.first_name}}  {{user.last_name}}
+                                        </div>
+                                    </div>
+                                    <div class="widget-icon">
+                                        <div class="icon">
+                                            <i
+                                                class="icon-copy fa fa-user"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+
+<!--      
+    <div class="main-container" >  -->
+        <!-- <div class="xs-pd-20-10 pd-ltr-20">
+         
+            
+             <div class="title pb-20">
+                <h2 class="h3 mb-0">Hello, {{ request.user|title }}!</h2>
+            </div>
+            <div class="row pb-10">
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                            <div class="card-box height-100-p widget-style3">
+                                <div class="d-flex flex-wrap">
+                                    <div class="widget-data">
+                                        <div class="weight-700 font-24 text-dark">Name</div>
+                                        <div class="font-14 text-secondary weight-500">
+                                           {{user.first_name}}  {{user.last_name}}
+                                        </div>
+                                    </div>
+                                    <div class="widget-icon">
+                                        <div class="icon">
+                                            <i
+                                                class="icon-copy fa fa-user"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">Matric Number</div>
+                                <div class="font-14 text-secondary weight-500">
+                                        {{user.matric}}
+                                </div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#00eccf">
+                                    <i class="icon-copy dw dw-calendar1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">Department</div>
+                                <div class="font-14 text-secondary weight-500">
+                                        {{user.Dept}}
+                                </div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#00eccf">
+                                    <i class="icon-copy dw dw-calendar1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">Level</div>
+                                <div class="font-14 text-secondary weight-500">
+                                        {{user.level}}
+                                </div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#00eccf">
+                                    <i class="icon-copy dw dw-calendar1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">Phone</div>
+                                <div class="font-14 text-secondary weight-500">
+                                        {{user.phone_number}}
+                                </div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon" data-color="#ff5b5b">
+                                    <span class="icon-copy ti-heart"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                    <div class="card-box height-100-p widget-style3">
+                        <div class="d-flex flex-wrap">
+                            <div class="widget-data">
+                                <div class="weight-700 font-24 text-dark">Gender</div>
+                                <div class="font-14 text-secondary weight-500">
+                                   {{custom_user.Gender}}
+                                </div>
+                            </div>
+                            <div class="widget-icon">
+                                <div class="icon">
+                                    <i
+                                        class="icon-copy fa fa-stethoscope"
+                                        aria-hidden="true"
+                                    ></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                       
+                <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                        <div class="card-box height-100-p widget-style3">
+                            <div class="d-flex flex-wrap">
+                                <div class="widget-data">
+                                    <div class="weight-700 font-24 text-dark">Date Of Birth</div>
+                                    <div class="font-14 text-secondary weight-500">
+                                       {{user.DOB}}
+                                    </div>
+                                </div>
+                                <div class="widget-icon">
+                                    <div class="icon">
+                                        <i
+                                            class="icon-copy fa fa-stethoscope"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                        <div class="card-box height-100-p widget-style3">
+                            <div class="d-flex flex-wrap">
+                                <div class="widget-data">
+                                    <div class="weight-700 font-24 text-dark">Guardian Info</div>
+                                    <div class="font-14 text-secondary weight-500">
+                                       {{user.guardian_name}}  {{user.guardian_num}}
+                                    </div>
+                                </div>
+                                <div class="widget-icon">
+                                    <div class="icon">
+                                        <i
+                                            class="icon-copy fa fa-stethoscope"
+                                            aria-hidden="true"
+                                        ></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    {% for i in data_info %}
+                    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                            <div class="card-box height-100-p widget-style3">
+                                <div class="d-flex flex-wrap">
+                                    <div class="widget-data">
+                                        <div class="weight-700 font-24 text-dark">Room Booked</div>
+                                        <div class="font-14 text-secondary weight-500">
+                                                {{ i.user_room }}
+                                        </div>
+                                    </div>
+                                    <div class="widget-icon">
+                                        <div class="icon">
+                                            <i
+                                                class="icon-copy fa fa-stethoscope"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                            <div class="card-box height-100-p widget-style3">
+                                <div class="d-flex flex-wrap">
+                                    <div class="widget-data">
+                                        <div class="weight-700 font-24 text-dark">Time Booked</div>
+                                        <div class="font-14 text-secondary weight-500">
+                                            {{i.created_on}}
+                                        </div>
+                                    </div>
+                                    <div class="widget-icon">
+                                        <div class="icon">
+                                            <i
+                                                class="icon-copy fa fa-stethoscope"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+                                <div class="card-box height-100-p widget-style3">
+                                    <div class="d-flex flex-wrap">
+                                        <div class="widget-data">
+                                            <div class="weight-700 font-24 text-dark">Ref No</div>
+                                            <div class="font-14 text-secondary weight-500">
+                                                    {{ i.id }}
+                                            </div>
+                                        </div>
+                                        <div class="widget-icon">
+                                            <div class="icon">
+                                                <i
+                                                    class="icon-copy fa fa-stethoscope"
+                                                    aria-hidden="true"
+                                                ></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</div>
+                            
+
+                         
+
+
+</div>
+</div>
+
+<button type="button" class="btn btn-primary btn-lg btn-success" onclick="printFunction()">Print</button> -->
+                            
+<script>
+  function printFunction() { 
+    window.print(); 
+  }
+</script>
+<!-- <input type="button" class="btn btn-primary btn-lg btn-success" onclick="PrintTable();" value="Print" /> -->
+
+                            <!-- {% endfor %} -->
+                         
+                          
+
+
+                            
+<style id = "table_style" type="text/css">
+        /*body
+        {
+            font-family: Arial;
+            font-size: 10pt;
+        }*/
+        table
+        {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            border-radius: 3px;
+        }
+        table th
+        {
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+        table th, table td
+        {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+    a{
+        text-decoration: none;
+        color: #ccc;
+    }
+    a:link{
+  text-decoration: none!important;
+}
+    /* a:hover{
+        text-decoration: none;
+    } */
+    </style>
+    <script type="text/javascript">
+        function PrintTable() {
+            var printWindow = window.open('', '', 'height=200,width=400');
+            printWindow.document.write('<html><head><title>Table Contents</title>');
+
+            //Print the Table CSS.
+            var table_style = document.getElementById("table_style").innerHTML;
+            printWindow.document.write('<style type = "text/css">');
+            printWindow.document.write(table_style);
+            printWindow.document.write('</style>');
+            printWindow.document.write('</head>');
+
+            //Print the DIV contents ie. the HTML Table.
+            printWindow.document.write('<body>');
+            var divContents = document.getElementById("dvContents").innerHTML;
+            printWindow.document.write(divContents);
+            printWindow.document.write('</body>');
+
+            printWindow.document.write('</html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+
+
+	 {% for i in data_info %}
+     <div id="dvContents" style="padding: 5px;width:305px">
+
+        <div class="d-flex justify-content-center">
+
+
+            <center>
+                <img src="{% static 'img/favicon.jfif'%}" align="center" width="70" height="70" class="rounded-circle"> <div style="font-size: 30px; padding-top:20px;padding-left:25px; font-family: Arial, Helvetica, sans-serif;">Lead City University</div>
+            </center>
+                <br />
+
+
+                        </div>
+
+
+
+<br>
+<h3 align="center">Allocation Slip</h3>
+<br>
+    <table cellspacing="0" rules="all" border="1" align="center">
+        <tr>
+            <th>Full Name</th>
+
+            <th>Guardian Number</th>
+            <th>Phone Number</th>
+            <th>Gender</th>
+                </tr>
+
+
+        <tr>
+            <td>{{user.first_name}} {{user.last_name}}</td>
+
+            <td>{{user.guardian_num}}</td>
+            <td> {{user.phone_number}}</td>
+<td>{{user.Gender}}</td>
+</tr>
+<tr>
+<th>Matric Number</th>
+<th>Department</th>
+            <th>Level</th>
+            <th>Room Booked</th>
+
+
+            </tr>
+
+            <tr>
+<td>{{user.matric}}</td>
+<td>{{user.Dept}}</td>
+<td>{{user.level}}</td>
+
+            <td>{{ i.user_room }}</td>
+            
+
+        </tr>
+
+    </table><br>
+    <center>
+      <b style="font-weight: bold;">Time Booked:</b>  <i>{{i.created_on}}</i><br><br
+      <b style="font-weight:bold;">Ref No: </b> <i>{{i.id}}</i>
+    </center>
+</div>
+<br />
+ <input type="button" class="btn btn-primary btn-lg btn-success" onclick="PrintTable();" value="Print" />
+
+{% endfor %}
+
+<br />
+<br>
+<div class="footer-wrap pd-20 mb-20 card-box">
+<i class="fa fa-question-circle" aria-hidden="true"></i>
+Your Details will be displayed after a room has been allocated.
+Having any Issue? Contact 
+<a href="https://wa.me/+2348073258500?" target="_blank" class="btn btn-success" style="margin: 7px;">
+    Male Porter <i class="fa fa-male" aria-hidden="true"></i></a>
+
+<a href="https://wa.me/+2348125171002?" target="_blank" class="btn btn-success">Female Porter <i class="fa fa-female" aria-hidden="true"></i> </a>
+</div>
+
+
+{% endblock %}
+
+
+
+
