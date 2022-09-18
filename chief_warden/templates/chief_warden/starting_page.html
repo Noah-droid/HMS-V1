@@ -1,0 +1,97 @@
+{% extends 'chief_warden/main.html' %}
+{% load static %}
+{% block content %}
+    <!-- {% for i in block_list %}
+        <a href="{% url 'chief_floors_page' i.id %}" class="btn btn-primary btn-lg btn-warning">{{ i }} </a>
+    {% endfor %} -->
+
+
+
+    <div class="row pb-10">
+
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">Hostel Blocks</div>
+                    <div class="font-14 text-secondary weight-500">
+                        {{ block_count }}
+                    </div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#00eccf">
+                        <i class="icon-copy dw dw-calendar1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">Total Rooms</div>
+                    <div class="font-14 text-secondary weight-500">
+                        {{ room_count }}
+                    </div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#00eccf">
+                        <i class="icon-copy dw dw-calendar1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+        <div class="card-box height-100-p widget-style3">
+            <div class="d-flex flex-wrap">
+                <div class="widget-data">
+                    <div class="weight-700 font-24 text-dark">Bedspace Activity</div>
+                    <div class="font-14 text-secondary weight-500">
+                        {{ booked }} 
+                    </div>
+                </div>
+                <div class="widget-icon">
+                    <div class="icon" data-color="#00eccf">
+                        <i class="icon-copy dw dw-calendar1"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div> 
+
+<!-- {{ student_list| title }} -->
+
+{% for i in block_list %}
+<a href="{% url 'chief_rooms_page' i.id %}" class="btn btn-primary btn-lg btn-warning" style="margin: 3px; background-color: #77b5fe; border-color: #77b5fe;"> {{ i }} {{capacity}}</a>
+{% endfor %} 
+
+    </div> 
+
+
+  
+    
+
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="Ref_No">Enter Student Ref No to update the room: </label>
+            <input id="Ref_No" class="form-control" type="text" placeholder="Ref_No" name="Ref_No">
+            <br>
+            <input type="submit" class="btn btn-primary" value="submit">
+        </form>
+    </div>
+
+
+{% endblock %}
+
+    
+  

@@ -1,0 +1,31 @@
+{% extends 'chief_warden/main.html' %}
+
+{% block content %}
+    <table style="width:100%" class="table table-hover">
+        <tr style="margin: 3px; background-color: #77b5fe; border-color: #77b5fe; font-size: 17px;">
+            <th>Student Names</th>
+            <th>Student Email</th>
+            <th>Matric Number</th>
+            <th>Phone Number</th>
+            <th>Level</th>
+            <th>Department</th>
+            <th>Guardian Contact</th>
+            <th>Time Booked</th>
+
+        </tr>
+
+        {% for i in student_list %}
+            <tr>
+                <td>{{ i.user.first_name }} {{i.user.last_name}}</td>
+                <td>{{ i.user.email }}</td>
+                <td>{{i.user.matric}}</td>
+                <td>{{i.user.phone_number}}</td>
+                <td>{{i.user.level}}</td>
+                <td>{{i.user.Dept}}</td>
+                <td>{{i.user.guardian_num}}</td>
+                <td>{{ i.created_on }}</td>
+            </tr>
+
+        {% endfor %}
+    </table>
+{% endblock %}

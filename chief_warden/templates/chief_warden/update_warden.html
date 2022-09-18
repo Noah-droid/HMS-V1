@@ -1,0 +1,338 @@
+{% load static %}
+{% load mathfilters %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'plugins/images/favicon.jfif' %}">
+    <title>Hostel Allocation System</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="{% static 'plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css'%}" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="{% static 'plugins/bower_components/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="{% static 'plugins/bower_components/morrisjs/morris.css' %}" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="{% static 'plugins/bower_components/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="{% static 'css/colors/default.css' %}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+        $('#hostels').click(function(){
+            $('#male').toggle();
+            $('#female').toggle();
+        });
+     })
+    </script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+        $('#hostel_managers').click(function(){
+            $('#patron').toggle();
+            $('#matron').toggle();
+        });
+     })
+    </script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+        $('#student').click(function(){
+            document.location='students.html';
+        });
+     })
+    </script>
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header" style="background-color: skyblue;">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="index.html">
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--> <img src="{% static 'plugins/images/admin-logo.png' %}" alt="home" class="dark-logo" />
+                        <!--This is light logo icon--><img src="{% static 'plugins/images/favicon.jfif' %}" alt="home" style="height: 50px;width: 50px;margin-left: 150%;" class="light-logo" />
+                     </b>
+                        <!-- Logo text image you can use text also -->
+                        <span class="hidden-xs">
+                        <!--This is dark logo text--> 
+                        
+                        </span>
+                   </a>
+                </div>
+               
+                <!-- /Logo -->
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title" style="padding-top: 13px;">Dashboard</h4>
+                </div>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+
+                    <li>
+                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10" method="POST" action="/cheif_warden/search/">
+                            <input id="searchbar" placeholder="Search..." class="form-control" onkeyup="search_animal()" type="text"
+                            name="search" placeholder="Search by name etc.." required name="query" id="search" type="text" placeholder="Search"> <a href=""><i class="fa fa-search"></i></a> </form>
+                    </li>
+                    <li>
+                        <a class="profile-pic" href="#"> <!-- <img src="plugins/images/users/favicon.jfif" alt="user-img" width="36" class="img-circle"> --><span style="font-size: 16px;">{{user.username|title}}</span></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <script type="text/javascript">
+            function search_animal() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('post');
+                                    // <tbody>
+                                    //     {% for i in student_list %}
+                                    //     <tr class="post">
+                                    //         <!-- <td>{{i.id}}</td> -->
+                                    //         <td class="txt-oflo">{{ i.user.username }}</td>
+                                    //         <td>{{i.user_room}}</td>
+                                    //         <td>{{i.user.level}}</td>
+                                    //         <td>{{i.user.matric}}</td>
+                                    //         <td class="txt-oflo">{{i.created_on}}</td>
+                                    //         <td><span class="text-oflo">{{i.user.Gender}}</span></td>
+                                    //     </tr>
+                                        
+                                    //     {% endfor %}
+                                    // </tbody>
+            for (i = 0; i < x.length; i++) {
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display="none";
+                 
+                }
+                else {
+                    x[i].style.display="list-item";
+                }
+            }
+        }
+        </script>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav slimscrollsidebar">
+                <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li style="padding: 61px 0 0;">
+                        <a href="/" class="waves-effect"><i class="fa fa-th fa-fw" aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                  <!--   <li>
+                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                    </li> -->
+                    <li>
+                        <a href="/chief_warden/student" id="student" class="waves-effect"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Students</a>
+                    </li>
+                    <li>
+                        <a href="/chief_warden/hostel" id="hostels" class="waves-effect"><i class="fa fa-university fa-fw" aria-hidden="true"></i>Hostels</a>
+                    </li>
+                    <!-- <li id='male' style="display: none;">
+                        <a href="blank.html" class="waves-effect"><i  aria-hidden="true"></i>Male</a>
+                    </li>
+                    <li id="female" style="display: none;">
+                        <a href="blank.html" class="waves-effect"><i  aria-hidden="true"></i>Female</a>
+                    </li> -->
+                     <li>
+                        <a id="hostel_managers" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Hostel Managers</a>
+                    </li>
+                     <li id="patron" style="display: none;">
+                        <a href="list_of_managers/" class="waves-effect"><i  aria-hidden="true"></i>List</a>
+                    </li>
+                    <li id="matron" style="display: none;">
+                        <a href="matron.html" class="waves-effect"><i  aria-hidden="true"></i>Matron</a>
+                    </li>
+                    <!-- <li>
+                        <a href="blank.html" class="waves-effect"><i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>Add</a>
+                    </li>
+                    <li>
+                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Icons</a>
+                    </li> -->
+
+                   <!--  <li>
+                        <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Error 404</a>
+                    </li>
+ -->
+                </ul>
+                 <div class="center p-20">
+                     <a href="{% url 'logout_page' %}" class="btn btn-danger btn-block waves-effect waves-light">Logout</a>
+                 </div>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid"><br><br>
+                <!-- <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Dashboard</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade to Pro</a> 
+                        <ol class="breadcrumb">
+                            <li><a href="#">Admin</a></li>
+                        </ol>
+                    </div>
+                </div> -->
+                <!-- /.row -->
+                <!-- ============================================================== -->
+                <!-- Different data widgets -->
+                <!-- ============================================================== -->
+                <!-- .row -->
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Hostels</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id=""><i class="fa fa-university fa-fw" aria-hidden="true"></i></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-dark"></i> <span class="counter text-dark">{{ block_count }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total Rooms</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">{{ room_count }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Total BedSpaces</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash3"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">2596</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Allocated BedSpaces</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash4"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-danger">{{ booked }} </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Available Bedspaces</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash"></div>
+                                </li>
+                                <li class="text-right"><i class="ti-arrow-up text-success"></i> <span class="counter text-success">{{ spaces_left | sub:booked }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h5>Warden name: {{ warden_info.Warden_ID }}</h5>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form_w.as_table }}
+        </table>
+        <br>
+        <a href="{% url 'default_home_name' %}" class="btn btn-danger" role="button">Cancel</a>
+        <input type="submit" class="btn btn-primary" name="update">
+
+    </form>
+
+
+                </div>
+                
+                <!-- ============================================================== -->
+                <!-- chat-listing & recent comments -->
+                <!-- ============================================================== -->
+                
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2022 &copy; Hostel Allocation System designed by <a href=''>Team of 4</a></footer>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'plugins/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="{% static 'plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js' %}"></script>
+    <!--slimscroll JavaScript -->
+    <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'js/waves.js' %}"></script>
+    <!--Counter js -->
+    <script src="{% static 'plugins/bower_components/waypoints/lib/jquery.waypoints.js' %}"></script>
+    <script src="{% static 'plugins/bower_components/counterup/jquery.counterup.min.js' %}"></script>
+    <!-- chartist chart -->
+    <script src="{% static 'plugins/bower_components/chartist-js/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <!-- Sparkline chart JavaScript -->
+    <script src="{% static 'plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'js/custom.min.js' %}"></script>
+    <script src="{% static 'js/dashboard0.js' %}"></script>
+    <script src="{% static 'plugins/bower_components/toast-master/js/jquery.toast.js' %}"></script>
+</body>
+
+</html>

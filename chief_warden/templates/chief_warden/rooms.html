@@ -1,0 +1,148 @@
+{% extends 'chief_warden/main.html' %}
+
+{% block content %}
+<style>
+  #myInput{
+    width: 350px;
+    margin-left: 680px;
+    box-shadow: #77b5fe 5px 5px 2px;
+  }
+</style>
+<h3 class="box-title">Total Rooms: {{room_count}} rooms</h3>
+<input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by Room Number.." title="Type in a name">
+
+    <br>
+    
+    <!-- {% for i in room_list %}
+
+
+        <div class="card" style="width: 18rem;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUQ30X9zHfGTkhk45n6heuUTyssEW99ElxRQ&usqp=CAU"
+                 class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ i.Room_No }}</h5>
+                <a href="{% url 'student_rooms_info' i.id %}" class="btn btn-primary">Click Here</a>
+            </div>
+        </div>
+        <br>
+    {% endfor %} -->
+
+    <!-- <script>
+      function myFunction() {
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          for (i = 0; i < li.length; i++) {
+              a = li[i].getElementsByTagName("a")[0];
+              txtValue = a.textContent || a.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+              } else {
+                  li[i].style.display = "none";
+              }
+          }
+      }
+      </script> -->
+
+     <!-- {% for i in room_list %}
+     
+    <a href="{%  url 'student_rooms_info' i.id %}" id="myTable" class="btn btn-primary btn-lg btn-warning" style="margin: 7px; background-color: #77b5fe; border-color: #77b5fe;" > {{ i }} <br> {{i.Capacity}} Bedded </a>
+{% endfor %} -->
+
+
+
+
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+      <div class="post">
+      <div class="white-box">
+          <!-- <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
+              <select class="form-control pull-right row b-none">
+                  <option>March 2017</option>
+                  <option>April 2017</option>
+                  <option>May 2017</option>
+                  <option>June 2017</option>
+                  <option>July 2017</option>
+              </select>
+          </div> -->
+
+          <script>
+            function myFunction() {
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("myTable");
+              tr = table.getElementsByTagName("tr");
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }       
+              }
+            }
+            </script>
+         
+          <div class="table-responsive">
+              <table class="table" id="myTable">
+                  <thead>
+                      <tr>
+                          <!-- <th>#</th> -->
+                          <th>Room Number</th>
+                          <th>Bedspaces</th>
+                          <th>Occupants</th>
+                         
+                       
+                          
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in chief_rooms_list %}
+                      <tr>
+                         
+                          <td class="txt-oflo">{{ i }}</td>
+                          <td>{{i.Capacity}} Bedded</td>
+                          <td>{{i.Number_already_occupied}} Occupant(s)</td>
+                        
+                          <td> <a href="{%  url 'student_room_info' i.id %}" id="myTable" class="btn btn-primary btn-lg btn-warning" style="margin: 7px; background-color: #77b5fe; border-color: #77b5fe;" >Enter room</a></td>
+                        
+                      </tr>
+                      
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+<!-- <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
+    </script> -->
+
+
